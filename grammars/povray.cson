@@ -1,0 +1,141 @@
+'name': 'Povray'
+'scopeName': 'source.povray'
+'fileTypes': [
+  'pov'
+  'inc'
+]
+'patterns': [
+  {
+    'include': '#number'
+  }
+  {
+    'include': '#string_single'
+  }
+  {
+    'include': '#string_double'
+  }
+  # -----------------------------------------------------------------
+  # {
+  #   'match': '\\.'
+  #   'name': 'constant.character.escape.gnuplot'
+  # }
+  # {
+  #   'match': '(\<)(.*?)(\>)'
+  #   'patterns': [
+  #     {
+  #       'include': '$self'
+  #     }
+  #   ]
+  # }
+  # comments --------------------------------------------------------
+  {
+    'match': '^/\\* =(\\s*.*?)\\s*= \\*/$\\n?'
+    'name': 'comment.block.povray'
+  }
+  {
+    'begin': '/\\*'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.begin.c'
+    'end': '\\*/'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.end.c'
+    'name': 'comment.block.povray'
+  }
+  {
+    # 'captures':
+    #   '1':
+    #     'name': 'punctuation.definition.comment.povray'
+    'match': '(?<!\\$)(//)(?!\\{).*$\\n?'
+    'name': 'comment.line.number-sign.povray'
+  }
+  # keywords --------------------------------------------------------
+  {
+    'match': '\\b(\
+      ambient|\
+      box|break|\
+      camera|case|clock|color|colour|color_map|colour_map|cone|cylinder|\
+      difference|diffuse|dimensions|direction|distance|\
+      else|end|\
+      global_settings|\
+      if|include|intersection|inverse|\
+      jitter|\
+      light_source|location|look_at|looks_like|\
+      max|material|matrix|media|merge|mesh|mesh2|min|mod|\
+      no|normal|\
+      object|off|on|once|open|orient|\
+      pattern|perspective|pi|pigment|plane|point_at|polygon|\
+      radiosity|radius|range|ratio|read|render|reflection|rgb|rgbf|rgbft|rgbt|right|\
+      scale|select|size|specular|sphere|switch|sys|\
+      texture|torus|transform|triangle|true|type|\
+      union|up|\
+      version|\
+      warning|warp|while|write|\
+      x|\
+      y|yes|\
+      z|\
+      )\\b'
+    'name': 'keyword.povray'
+  }
+  # {
+  #   'match': '\\b(angle)\\b'
+  #   'name': 'keyword.operator.povray'
+  # }
+  # functions -------------------------------------------------------
+  {
+    'match': '\\b(rotate|translate)\\b'
+    'name': 'entity.name.function.povray'
+  }
+  # numbers ---------------------------------------------------------
+  {
+    'match': '\\b((0(x|X)[0-9a-fA-F]*)|(0(b|B)[01]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b'
+    'name': 'constant.numeric.povray'
+  }
+  # strings ---------------------------------------------------------
+  {
+    'begin': '"'
+    'beginCaptures':
+        '0':
+            'name': 'punctuation.definition.string.begin.povray'
+    'end': '"'
+    'endCaptures':
+        '0':
+            'name': 'punctuation.definition.string.end.povray'
+    'name': 'string.quoted.double.povray'
+  }
+  # -----------------------------------------------------------------
+]
+'repository':
+    'number':
+        'match': '(?x:-?(?:0|[1-9]\\d*)(?:\\.\\d+(?:[eE][+-]?\\d+)?)?)'
+        'name': 'constant.numeric.povray'
+    'operator':
+        'match': '\\s*(==|~=|>|>=|<|<=|&|&&|:|\\||\\|\\||\\+|-|\\*|\\.\\*|/|\\./|\\\\|\\.\\\\|\\^|\\.\\^)\\s*'
+        'name': 'keyword.operator.symbols.povray'
+    'string_double':
+        'begin': '"'
+        'beginCaptures':
+            '0':
+                'name': 'punctuation.definition.string.begin.povray'
+        'end': '"'
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.string.end.povray'
+        'name': 'string.quoted.double.povray'
+        'patterns': [
+            {
+                'match': '\\[\\$`"\\\\\n]'
+                'name': 'constant.character.escape.povray'
+            }
+        ]
+    'string_single':
+        'begin': "'"
+        'beginCaptures':
+            '0':
+                'name': 'punctuation.definition.string.begin.povray'
+        'end': "'"
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.string.end.povray'
+        'name': 'string.quoted.single.povray'
