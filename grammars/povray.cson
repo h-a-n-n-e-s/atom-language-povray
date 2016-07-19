@@ -14,19 +14,9 @@
   {
     'include': '#string_double'
   }
-  # -----------------------------------------------------------------
-  # {
-  #   'match': '\\.'
-  #   'name': 'constant.character.escape.gnuplot'
-  # }
-  # {
-  #   'match': '(\<)(.*?)(\>)'
-  #   'patterns': [
-  #     {
-  #       'include': '$self'
-  #     }
-  #   ]
-  # }
+  {
+    'include': '#operator'
+  }
   # comments --------------------------------------------------------
   {
     'match': '^/\\* =(\\s*.*?)\\s*= \\*/$\\n?'
@@ -44,98 +34,171 @@
     'name': 'comment.block.povray'
   }
   {
-    # 'captures':
-    #   '1':
-    #     'name': 'punctuation.definition.comment.povray'
     'match': '(?<!\\$)(//)(?!\\{).*$\\n?'
     'name': 'comment.line.number-sign.povray'
   }
-  # keywords --------------------------------------------------------
+  # keyword ---------------------------------------------------------
   {
-    'match': '\\b(\
-      ambient|\
-      box|break|\
-      camera|case|clock|color|colour|color_map|colour_map|cone|cylinder|\
-      difference|diffuse|dimensions|direction|distance|\
-      else|end|\
-      global_settings|\
-      if|include|intersection|inverse|\
-      jitter|\
-      light_source|location|look_at|looks_like|\
-      max|material|matrix|media|merge|mesh|mesh2|min|mod|\
-      no|normal|\
-      object|off|on|once|open|orient|\
-      pattern|perspective|pi|pigment|plane|point_at|polygon|\
-      radiosity|radius|range|ratio|read|render|reflection|rgb|rgbf|rgbft|rgbt|right|\
-      scale|select|size|specular|sphere|switch|sys|\
-      texture|torus|transform|triangle|true|type|\
-      union|up|\
-      version|\
-      warning|warp|while|write|\
-      x|\
-      y|yes|\
-      z|\
-      )\\b'
     'name': 'keyword.povray'
+    'match': '\\b(\
+      array|ascii|\
+      break|\
+      camera|charset|case|\
+      debug|declare|default|\
+      else|end|error|\
+      fclose|fopen|function|\
+      global_settings|\
+      if|ifdef|iff|ifndef|include|internal|\
+      light_source|local|\
+      macro|\
+      normal|\
+      object|once|open|orient|\
+      pattern|perspective|point_at|polygon|\
+      radiosity|radius|range|ratio|render|right|\
+      size|switch|sys|\
+      torus|triangle|type|\
+      up|\
+      warning|warp|while|\
+      x|\
+      y|\
+      z\
+      )\\b'
   }
-  # {
-  #   'match': '\\b(angle)\\b'
-  #   'name': 'keyword.operator.povray'
-  # }
-  # functions -------------------------------------------------------
+  # variable.parameter ----------------------------------------------
   {
-    'match': '\\b(rotate|translate)\\b'
+    'name': 'variable.parameter.povray'
+    'match': '\\b(\
+      aa_level|aa_threshold|absorption|accuracy|adaptive|adc_bailout|agate_turb|all|\
+        all_intersections|alpha|altitude|always_sample|ambient|ambient_light|angle|aperture|\
+        append|arc_angle|area_light|assumed_gamma|autostop|\
+      b_spline|bezier_spline|black_hole|blur_samples|brick_size|brightness|brilliance|bump_size|\
+      caustics|circular|collect|component|composite|confidence|conic_sweep|conserve_energy|\
+        control0|control1|coords|count|crand|cubic_spline|cubic_wave|cutaway_textures|\
+      density_file|df3|diffuse|direction|dispersion|dispersion_samples|dist_exp|distance|\
+        double_illuminate|\
+      eccentricity|emission|error_bound|evaluate|expand_thresholds|exponent|exterior|extinction|\
+      fade_color|fade_colour|fade_distance|fade_power|falloff|falloff_angle|filter|fisheye|\
+        flatness|flip|focal_point|fog_alt|fog_offset|fog_type|form|frequency|fresnel|\
+      gather|global_lights| gradient|gray_threshold|\
+      hf_gray_16|hierarchy|hypercomplex|hollow|\
+      inside_vector|interpolate|intervals|inverse|ior|irid_wavelength|\
+      jitter|\
+      lambda|linear_spline|linear_sweep|load_file|location|look_at|low_error_factor|\
+      major_radius|map_type|max_gradient|max_intersections|max_iteration|max_sample|max_trace|\
+        max_trace_level|media_attenuation|media_interaction|metallic|method|metric|\
+        minimum_reuse|mortar|\
+      phong|phong_size|\
+      quick_color|quick_colour|\
+      read|reflection|roughness|\
+      scale|specular|\
+      write\
+    )\\b'
+  }
+  # entity.name.class -----------------------------------------------
+  {
+    'name': 'entity.name.class.povray'
+    'match': '\\b(\
+      agate|average|\
+      background|bicubic_patch|blob|box|boxed|bozo|brick|bumps|\
+      cells|checker|cone|crackle|cubic|cylinder|cylindrical|\
+      dents|disc|\
+      facets|fog|\
+      gradient|granite|\
+      height_field|hexagon|\
+      irid|isosurface|\
+      julia|julia_fractal|\
+      lathe|leopard|\
+      magnet|mandel|marble|\
+      plane|\
+      sphere\
+    )\\b'
+  }
+  # entity.name.function --------------------------------------------
+  {
     'name': 'entity.name.function.povray'
+    'match': '\\b(\
+      bounded_by|bump_map|\
+      clipped_by|color_map|colour_map|contained_by|\
+      density|density_map|difference|\
+      finish|face_indices|\
+      image_map|image_pattern|interior|interior_texture|intersection|\
+      light_group|looks_like|\
+      material|material_map|media|mesh|mesh2|merge|\
+      pigment|\
+      texture|transform|\
+      union\
+    )\\b'
   }
-  # numbers ---------------------------------------------------------
+  # support.function ------------------------------------------------
   {
-    'match': '\\b((0(x|X)[0-9a-fA-F]*)|(0(b|B)[01]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b'
+    'name': 'support.function.povray'
+    'match': '\\b(\
+      abs|acos|acosh|asc|asin|asinh|atan|atanh|atan2|\
+      ceil|chr|concat|cos|cosh|color|colour|cube|\
+      defined|degrees|dimensions|dimension_size|div|\
+      exp|\
+      file_exists|floor|\
+      inside|int|\
+      ln|log|\
+      matrix|max|max_extent|min|min_extent|mod|\
+      pow|\
+      radians|rand|rgb|rgbf|rgbft|rgbt|rotate|\
+      seed|select|sin|sinh|sqrt|strcmp|strlen|\
+      tan|tanh|translate|\
+      val|vdot|vlength\
+    )\\b'
+  }
+  # storage ---------------------------------------------------------
+  {
+    'name': 'storage.povray'
+    'match': '\\b(\
+      clock|clock_delta|clock_on|\
+      blue|\
+      false|final_clock|final_frame|frame_number|\
+      gif|gray|green|\
+      initial_clock|initial_frame|image_width|image_height|\
+      jpeg|\
+      no|\
+      off|on|\
+      pi|\
+      true|\
+      version|\
+      yes\
+    )\\b'
+  }
+]
+# -------------------------------------------------------------------
+# global definitions ------------------------------------------------
+'repository':
+  'number':
+    'match': '(?x:-?(?:0|[1-9]\\d*)(?:\\.\\d+(?:[eE][+-]?\\d+)?)?)'
     'name': 'constant.numeric.povray'
-  }
-  # strings ---------------------------------------------------------
-  {
+  'string_double':
     'begin': '"'
     'beginCaptures':
-        '0':
-            'name': 'punctuation.definition.string.begin.povray'
+      '0':
+        'name': 'punctuation.definition.string.begin.povray'
     'end': '"'
     'endCaptures':
-        '0':
-            'name': 'punctuation.definition.string.end.povray'
+      '0':
+        'name': 'punctuation.definition.string.end.povray'
     'name': 'string.quoted.double.povray'
-  }
-  # -----------------------------------------------------------------
-]
-'repository':
-    'number':
-        'match': '(?x:-?(?:0|[1-9]\\d*)(?:\\.\\d+(?:[eE][+-]?\\d+)?)?)'
-        'name': 'constant.numeric.povray'
-    'operator':
-        'match': '\\s*(==|~=|>|>=|<|<=|&|&&|:|\\||\\|\\||\\+|-|\\*|\\.\\*|/|\\./|\\\\|\\.\\\\|\\^|\\.\\^)\\s*'
-        'name': 'keyword.operator.symbols.povray'
-    'string_double':
-        'begin': '"'
-        'beginCaptures':
-            '0':
-                'name': 'punctuation.definition.string.begin.povray'
-        'end': '"'
-        'endCaptures':
-            '0':
-                'name': 'punctuation.definition.string.end.povray'
-        'name': 'string.quoted.double.povray'
-        'patterns': [
-            {
-                'match': '\\[\\$`"\\\\\n]'
-                'name': 'constant.character.escape.povray'
-            }
-        ]
-    'string_single':
-        'begin': "'"
-        'beginCaptures':
-            '0':
-                'name': 'punctuation.definition.string.begin.povray'
-        'end': "'"
-        'endCaptures':
-            '0':
-                'name': 'punctuation.definition.string.end.povray'
-        'name': 'string.quoted.single.povray'
+    'patterns': [
+      {
+        'match': '\\[\\$`"\\\\\n]'
+        'name': 'constant.character.escape.povray'
+      }
+    ]
+  'string_single':
+    'begin': "'"
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.povray'
+    'end': "'"
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.povray'
+    'name': 'string.quoted.single.povray'
+  'operator':
+    'match': '\\s*(\\+|-|\\*|<=|=|>=|!=)\\s*' # TODO: /,<,>
+    'name': 'keyword.operator.povray'
