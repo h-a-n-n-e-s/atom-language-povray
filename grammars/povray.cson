@@ -43,7 +43,7 @@
     'match': '\\b(\
       array|ascii|\
       break|\
-      camera|charset|case|\
+      camera|case|charset|\
       debug|declare|default|\
       else|end|error|\
       fclose|fopen|function|\
@@ -51,18 +51,18 @@
       if|ifdef|iff|ifndef|include|internal|\
       light_source|local|\
       macro|\
-      normal|\
-      object|once|open|orient|\
-      pattern|perspective|point_at|polygon|\
-      radiosity|radius|range|ratio|render|right|\
-      size|switch|sys|\
-      torus|triangle|type|\
-      up|\
-      warning|warp|while|\
+      object|open|\
+      pattern|photons|\
+      radiosity|range|render|\
+      statistics|switch|sys|\
+      t|\
+      u|undef|utf8|\
+      v|version|\
+      warning|while|\
       x|\
       y|\
       z\
-      )\\b'
+    )\\b'
   }
   # variable.parameter ----------------------------------------------
   {
@@ -79,7 +79,7 @@
       eccentricity|emission|error_bound|evaluate|expand_thresholds|exponent|exterior|extinction|\
       fade_color|fade_colour|fade_distance|fade_power|falloff|falloff_angle|filter|fisheye|\
         flatness|flip|focal_point|fog_alt|fog_offset|fog_type|form|frequency|fresnel|\
-      gather|global_lights| gradient|gray_threshold|\
+      gather|global_lights|gray_threshold|\
       hf_gray_16|hierarchy|hypercomplex|hollow|\
       inside_vector|interpolate|intervals|inverse|ior|irid_wavelength|\
       jitter|\
@@ -87,11 +87,21 @@
       major_radius|map_type|max_gradient|max_intersections|max_iteration|max_sample|max_trace|\
         max_trace_level|media_attenuation|media_interaction|metallic|method|metric|\
         minimum_reuse|mortar|\
-      phong|phong_size|\
-      quick_color|quick_colour|\
-      read|reflection|roughness|\
-      scale|specular|\
-      write\
+      natural_spline|nearest_count|no_bump_scale|no_image|no_reflection|no_shadow|\
+        noise_generator|number_of_waves|\
+      octaves|offset|omega|omnimax|once|orient|orientation|orthographic|\
+      panoramic|parallel|pass_through|perspective|phase|phong|phong_size|point_at|poly_wave|\
+        precision|precompute|pretrace_end|pretrace_start|\
+      quadratic_spline|quaternion|quick_color|quick_colour|\
+      radius|ramp_wave|ratio|read|recursion_limit|reflection|reflection_exponent|refraction|\
+        repeat|right|roughness|\
+      samples|save_file|scale|scallop_wave|shadowless|sine_wave|size|sky|slice|smooth|solid|\
+        spacing|specular|split_union|spotlight|strength|sturm|\
+      target|thickness|threshold|tightness|tile2|tiles|tolerance|transmit|triangle_wave|ttf|\
+        turb_depth|turbulence|type|\
+      u_steps|ultra_wide_angle|up|use_alpha|use_color|use_colour|use_index|uv_mapping|\
+      v_steps|variance|\
+      water_level|width|write\
     )\\b'
   }
   # entity.name.class -----------------------------------------------
@@ -109,8 +119,14 @@
       julia|julia_fractal|\
       lathe|leopard|\
       magnet|mandel|marble|\
-      plane|\
-      sphere\
+      onion|\
+      parametric|planar|plane|poly|polygon|prism|\
+      quadric|quartic|quilted|\
+      radial|rainbow|ripples|\
+      sky_sphere|slope|smooth_triangle|sor|sphere|sphere_sweep|spherical|spiral1|spiral2|\
+        spline|spotted|superellipsoid|\
+      text|toroidal|torus|triangle|\
+      waves|wood|wrinkles\
     )\\b'
   }
   # entity.name.function --------------------------------------------
@@ -124,9 +140,13 @@
       image_map|image_pattern|interior|interior_texture|intersection|\
       light_group|looks_like|\
       material|material_map|media|mesh|mesh2|merge|\
-      pigment|\
-      texture|transform|\
-      union\
+      normal|normal_indices|normal_map|normal_vectors|\
+      pigment|pigment_map|pigment_pattern|projected_through|\
+      scattering|slope_map|\
+      texture|texture_list|texture_map|transform|\
+      union|uv_indices|uv_vectors|\
+      vertex_vectors|\
+      warp|
     )\\b'
   }
   # support.function ------------------------------------------------
@@ -141,11 +161,11 @@
       inside|int|\
       ln|log|\
       matrix|max|max_extent|min|min_extent|mod|\
-      pow|\
-      radians|rand|rgb|rgbf|rgbft|rgbt|rotate|\
-      seed|select|sin|sinh|sqrt|strcmp|strlen|\
-      tan|tanh|translate|\
-      val|vdot|vlength\
+      pow|prod|pwr|\
+      radians|rand|reciprocal|rgb|rgbf|rgbft|rgbt|rotate|\
+      seed|select|sin|sinh|sqr|sqrt|str|strcmp|strlen|strlwr|strupr|substr|sum|\
+      tan|tanh|trace|translate|\
+      val|vaxis_rotate|vcross|vdot|vlength|vnormalize|vrotate|vstr|vturbulence\
     )\\b'
   }
   # storage ---------------------------------------------------------
@@ -160,9 +180,9 @@
       jpeg|\
       no|\
       off|on|\
-      pi|\
-      true|\
-      version|\
+      pi|pgm|png|pot|ppm|\
+      red|\
+      tga|tiff|true|\
       yes\
     )\\b'
   }
