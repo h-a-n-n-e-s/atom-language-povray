@@ -1,7 +1,7 @@
 {
   "name": "atom-language-povray",
   "version": "0.0.0",
-  "description": "Syntax highlighting for Povray in Atom",
+  "description": "Syntax highlighting for Povray in Atom.",
   "keywords": [],
   "repository": "https://github.com/h-a-n-n-e-s/atom-language-povray",
   "license": "MIT",

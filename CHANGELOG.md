@@ -1,3 +1,2 @@
-## 0.1.0 - First Release
-* Every feature added
-* Every bug fixed
+## 0.0.0 - First Release
+* Syntax highlighting tested for several .pov and .inc files
